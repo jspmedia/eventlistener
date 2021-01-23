@@ -24,7 +24,7 @@ Fire an event
 ```javascript
 eventListener.fireEvent("some-event-type", ["Hello world!", 1]);
 ```
-> "Hello world!, 1";
+> "Hello world!, 1"
 
 ## Advanced usage
 
@@ -51,14 +51,14 @@ Fire an event
 ```javascript
 eventListener.fireEvent("some-other-event-type", ["Hello world!", 1]);
 ```
-> "My callback: Hello world!, 1, bar";
+> "My callback: Hello world!, 1, bar"
 
 Overwrite "this" object on event fire
 
 ```javascript
 eventListener.fireEvent("some-other-event-type", ["Hello world!", 2], {foo: "other"});
 ```
-> "My callback: Hello world!, 2, other";
+> "My callback: Hello world!, 2, other"
 
 ### (Retroactive) Firing all previous events when adding new callback
 
