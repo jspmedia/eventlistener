@@ -1,5 +1,5 @@
 # EventListener
-Quickly implement your own event listener in JavaScript
+Quickly implement your own event listener in JavaScript.
 
 ## Getting started
 
@@ -31,7 +31,7 @@ eventListener.fireEvent("some-event-type", ["Hello world!", 1]);
 
 ## Advanced usage
 
-### Setting "this"
+### Setting "this" object
 
 Instantiate an EventListener object
 
@@ -42,19 +42,16 @@ var eventListener = new EventListener();
 Add an event listener callback with a specific "this" object
 
 ```javascript
-// Create a callback function
 var myOtherCallback = function(param1, param2) {
   console.log("My callback: " + param1 + ", " + param2 + ", " + this.foo);
 };
 
-// Add callback function to event listener
 eventListener.add("some-other-event-type", myOtherCallback, {foo: "bar"});
 ```
 
 Fire an event
 
 ```javascript
-// Fire event and pass two parameters
 eventListener.fireEvent("some-other-event-type", ["Hello world!", 1]);
 ```
 > "My callback: Hello world!, 1, bar";
@@ -62,7 +59,6 @@ eventListener.fireEvent("some-other-event-type", ["Hello world!", 1]);
 Overwrite "this" object on event fire
 
 ```javascript
-// Fire event and pass two parameters
 eventListener.fireEvent("some-other-event-type", ["Hello world!", 2], {foo: "other"});
 ```
 > "My callback: Hello world!, 2, other";
@@ -72,12 +68,12 @@ eventListener.fireEvent("some-other-event-type", ["Hello world!", 2], {foo: "oth
 Add a new callback, but set retroactive to true
 
 ```javascript
-// Create a callback function
+// Create a new callback function
 var myNewOtherCallback = function(param1, param2) {
   console.log("New callback: " + param1 + ", " + param2 + ", " + this.foo);
 };
 
-// Add callback function to event listener
+// Add callback function to event listener with retroactive so all previous events will fire this callback
 eventListener.add("some-other-event-type", myNewOtherCallback, undefined, {retroactive: true});
 ```
 > "New callback: Hello world!, 1, undefined"
@@ -88,7 +84,6 @@ All previous events immediately fired to catch this callback up
 Fire a new event
 
 ```javascript
-// Fire event and pass two parameters
 eventListener.fireEvent("some-other-event-type", ["Hello world!", 3]);
 ```
 > "My callback: Hello world!, 3, bar"
