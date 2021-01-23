@@ -74,6 +74,7 @@ var myNewOtherCallback = function(param1, param2) {
 eventListener.add("some-other-event-type", myNewOtherCallback, undefined, {retroactive: true});
 ```
 > New callback: Hello world!, 1, undefined
+
 > New callback: Hello world!, 2, other
 
 All previous events immediately fired to catch this callback up
@@ -83,5 +84,6 @@ Fire a new event
 ```javascript
 eventListener.fireEvent("some-other-event-type", ["Hello world!", 3]);
 ```
-> "My callback: Hello world!, 3, bar"
-> "New callback: Hello world!, 3, undefined"
+> My callback: Hello world!, 3, bar
+
+> New callback: Hello world!, 3, undefined
