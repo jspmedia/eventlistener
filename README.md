@@ -12,19 +12,16 @@ var eventListener = new EventListener();
 Add an event listener callback
 
 ```javascript
-// Create a callback function
 var myCallback = function(param1, param2) {
   console.log(param1 + ", " + param2);
 };
 
-// Add callback function to event listener
 eventListener.add("some-event-type", myCallback);
 ```
 
 Fire an event
 
 ```javascript
-// Fire event and pass two parameters
 eventListener.fireEvent("some-event-type", ["Hello world!", 1]);
 ```
 > "Hello world!, 1";
