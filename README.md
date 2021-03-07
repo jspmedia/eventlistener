@@ -87,3 +87,44 @@ eventListener.fireEvent("some-other-event-type", ["Hello world!", 3]);
 > My callback: Hello world!, 3, bar
 
 > New callback: Hello world!, 3, undefined
+
+### Adding listeners and removing them
+
+Instantiate an EventListener object
+
+```javascript
+var eventListener = new EventListener();
+```
+
+Add event listeners callback with the `id`
+
+```javascript
+var myCallback = function(nameOfListener) {
+  return function(param1, param2) {
+    console.log(nameOfListener + ":", param1 + ", " + param2);
+  };
+};
+
+eventListener.add("some-event-type", myCallback("Listener 1"), undefined, {id: "my-listener-1"});
+eventListener.add("some-event-type", myCallback("Listener 2"), undefined, {id: "my-listener-2"});
+eventListener.add("some-event-type", myCallback("Listener 3"), undefined, {id: "my-listener-3"});
+```
+
+Fire an event
+
+```javascript
+eventListener.fireEvent("some-event-type", ["Hello world!", 1]);
+```
+> Listener 1: Hello world!, 1
+> Listener 2: Hello world!, 1
+> Listener 3: Hello world!, 1
+
+Remove the second listener and fire another event
+
+```javascript
+eventListener.remove("some-event-type", "my-listener-2");
+
+eventListener.fireEvent("some-event-type", ["Hello world!", 2]);
+```
+> Listener 1: Hello world!, 2
+> Listener 3: Hello world!, 2
