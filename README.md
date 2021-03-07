@@ -116,7 +116,9 @@ Fire an event
 eventListener.fireEvent("some-event-type", ["Hello world!", 1]);
 ```
 > Listener 1: Hello world!, 1
+
 > Listener 2: Hello world!, 1
+
 > Listener 3: Hello world!, 1
 
 Remove the second listener and fire another event
@@ -127,4 +129,5 @@ eventListener.remove("some-event-type", "my-listener-2");
 eventListener.fireEvent("some-event-type", ["Hello world!", 2]);
 ```
 > Listener 1: Hello world!, 2
+
 > Listener 3: Hello world!, 2
