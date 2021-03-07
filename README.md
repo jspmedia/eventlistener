@@ -96,7 +96,7 @@ Instantiate an EventListener object
 var eventListener = new EventListener();
 ```
 
-Add event listeners callback with the `id`
+Add event listeners callbacks with `id` properties
 
 ```javascript
 var myCallback = function(nameOfListener) {
