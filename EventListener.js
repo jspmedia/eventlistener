@@ -53,8 +53,8 @@ var EventListener = function() {
           options && typeof options.this != "undefined" ? options.this : _listenersMap[eventType][id].this,
           Array.isArray(args) ? args : []
         );
-        // If listener should be removed after one fire
-        if (_listenersMap[eventType][id].once) {
+        // If listener should be removed after one fire (if still around)
+        if (_listenersMap[eventType][id] && _listenersMap[eventType][id].once) {
           delete _listenersMap[eventType][id];
         }
       }
