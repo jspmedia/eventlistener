@@ -1,21 +1,22 @@
-var EventListener = function() {
-  var _listenersMap = {};
-  var _fired = {};
-  var _noId = 0;
-  var fn = {
+const EventListener = function() {
+  const _listenersMap = {};
+  const _fired = {};
+  let _noId = 0;
+  const fn = {
     add: function(eventType, callback, options) {
       if (!fn.hasEvent(eventType)) {
         _listenersMap[eventType] = {};
       }
-      var ln = {
+      const ln = {
         callback: callback,
         this: options && typeof options.this != "undefined" ? options.this : {},
         once: options && options.once ? true : false
       };
+      let id;
       if (options && options.id) {
-        var id = "id:" + options.id;
+        id = "id:" + options.id;
       } else {
-        var id = "no:" + _noId;
+        id = "no:" + _noId;
         _noId++;
       }
       _listenersMap[eventType][id] = ln;
@@ -24,7 +25,7 @@ var EventListener = function() {
         if (!_fired.hasOwnProperty(eventType)) {
           _fired[eventType] = [];
         }
-        for (var event of _fired[eventType]) {
+        for (const event of _fired[eventType]) {
           ln.callback.apply(
             typeof event[2] != "undefined" ? event[2] : ln.this,
             Array.isArray(event[1]) ? event[1] : []
